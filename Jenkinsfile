@@ -2,26 +2,26 @@ pipeline {
     agent any
 
     tools {
-        maven 'Maven 3.9.10'   // Use the Maven name from Jenkins tool config
-        jdk 'Java 17'         // Use the JDK name from Jenkins tool config
+        maven 'Maven 3.9.10'   // Use the Maven name you set in Jenkins
+        jdk 'Java 17'          // Use the JDK name you set in Jenkins
     }
 
     stages {
         stage('Clone Code') {
             steps {
-                git 'https://github.com/Harinivasan30/jenkins-springboot-testing.git' // Change to your GitHub repo
+                git 'https://github.com/Harinivasan30/jenkins-springboot-testing.git'
             }
         }
 
         stage('Build Project') {
             steps {
-                sh 'mvn clean install'
+                bat 'mvn clean install'
             }
         }
 
         stage('Run App') {
             steps {
-                sh 'nohup java -jar target/*.jar &'
+                bat 'start /b java -jar target\\*.jar'
             }
         }
     }
