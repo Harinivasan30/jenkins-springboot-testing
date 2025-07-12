@@ -21,24 +21,26 @@ public class EmployeeController {
 
     @Autowired
     private EmployeeRepository repository;
-
-    @GetMapping
-    public List<Employee> getAll() {
-        return repository.findAll();
-    }
-
-    @PostMapping
+    
+    @PostMapping("/insert")
     public Employee add(@RequestBody Employee emp) {
         return repository.save(emp);
     }
 
-    @PutMapping("/{id}")
+    @GetMapping("/get")
+    public List<Employee> getAll() {
+        return repository.findAll();
+    }
+
+   
+
+    @PutMapping("/update/{id}")
     public Employee update(@PathVariable Long id, @RequestBody Employee emp) {
         emp.setId(id);
         return repository.save(emp);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public void delete(@PathVariable Long id) {
         repository.deleteById(id);
     }
