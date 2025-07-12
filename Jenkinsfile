@@ -21,7 +21,7 @@ pipeline {
 
         stage('Run App') {
             steps {
-                bat 'start /b java -jar target\\JenkinsTesting-0.0.1-SNAPSHOT.jar'
+                bat 'java -jar target\\JenkinsTesting-0.0.1-SNAPSHOT.jar'
             }
         }
     }
